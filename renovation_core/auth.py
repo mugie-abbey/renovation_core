@@ -1,6 +1,6 @@
 import frappe
 import jwt
-from frappe.auth import HTTPRequest, LoginManager, get_lang_code, check_session_stopped, CookieManager
+from frappe.auth import HTTPRequest, LoginManager, CookieManager
 
 
 # frappe's CookieManager is having old class style
@@ -67,10 +67,10 @@ class RenovationHTTPRequest(HTTPRequest):
     # login
     frappe.local.login_manager = LoginManager()
 
-    if frappe.form_dict._lang:
-      lang = get_lang_code(frappe.form_dict._lang)
-      if lang:
-        frappe.local.lang = lang
+#     if frappe.form_dict._lang:
+#       lang = get_lang_code(frappe.form_dict._lang)
+#       if lang:
+#         frappe.local.lang = lang
 
     self.validate_csrf_token()
 
@@ -78,4 +78,4 @@ class RenovationHTTPRequest(HTTPRequest):
     frappe.local.cookie_manager.init_cookies()
 
     # check status
-    check_session_stopped()
+#     check_session_stopped()
