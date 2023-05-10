@@ -16,7 +16,7 @@ migration_status_error = "error"
 @frappe.whitelist(allow_guest=True)
 def get_versions():
   from frappe.utils.change_log import get_versions
-  return get_versions()
+  return 1
 
 
 @frappe.whitelist()
@@ -39,11 +39,11 @@ def clear_cache():
   check_if_admin()
 
   # the following is a copy from frappe.commands.utils
-  import frappe.website.render
+  from frappe.website import page_renderers
   from frappe.desk.notifications import clear_notifications
   frappe.clear_cache()
   clear_notifications()
-  frappe.website.render.clear_cache()
+  # frappe.website.page_renderers.
   return "cache-cleared"
 
 

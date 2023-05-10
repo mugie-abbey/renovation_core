@@ -46,5 +46,5 @@ def get_lang_dict(lang=None):
 @frappe.whitelist()
 def get_boot_user_info():
   # used for listing the people in Comment mentions
-  from frappe.boot import get_fullnames
-  return get_fullnames()
+  from frappe.boot import get_user_info
+  return get_user_info()
